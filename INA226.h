@@ -77,7 +77,7 @@
     public:                                                                   // Publicly visible methods         //
       INA226_Class();                                                         // Class constructor                //
       ~INA226_Class();                                                        // Class destructor                 //
-      void     begin(const uint8_t maxBusAmps, const uint32_t nanoOhmR);      // Class initializer                //
+      void     begin(const uint8_t maxBusAmps, const uint32_t microOhmR);      // Class initializer                //
       uint16_t getBusMilliVolts(const bool waitSwitch=false);                 // Retrieve Bus voltage in mV       //
       int16_t  getShuntMicroVolts(const bool waitSwitch=false);               // Retrieve Shunt voltage in uV     //
       int32_t  getBusMicroAmps();                                             // Retrieve microamps               //
