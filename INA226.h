@@ -98,7 +98,7 @@
       uint8_t  _TransmissionStatus = 0;                                       // Return code for I2C transmission //
       uint16_t _Calibration        = 0;                                       // Calibration register value       //
       uint16_t _Configuration      = 0;                                       // Configuration register value     //
-      uint16_t _Current_LSB        = 0;                                       // Amperage LSB                     //
+      int64_t _Current_LSB        = 0;                                       // Amperage LSB                     //
       uint32_t _Power_LSB          = 0;                                       // Wattage LSB                      //
       uint8_t  _OperatingMode      = B111;                                    // Default continuous mode operation//
   }; // of MicrochipSRAM class definition                                     //                                  //
