@@ -24,7 +24,7 @@ INA226_Class::~INA226_Class() {} // of unused class destructor                //
 /*******************************************************************************************************************
 ** Method begin() does all of the initialization work                                                             **
 *******************************************************************************************************************/
-void INA226_Class::begin(const uint8_t maxBusAmps, const uint32_t nanoOhmR) { // Class initializer                //
+void INA226_Class::begin(const uint8_t maxBusAmps, const uint32_t microOhmR) { // Class initializer                //
   Wire.begin();                                                               // Start the I2C wire subsystem     //
   for(_DeviceAddress = 1;_DeviceAddress<127;_DeviceAddress++) {               // Loop for each possible address   //
     Wire.beginTransmission(_DeviceAddress);                                   // See if something is at address   //
@@ -33,7 +33,7 @@ void INA226_Class::begin(const uint8_t maxBusAmps, const uint32_t nanoOhmR) { //
       delay(10);                                                              // Wait for INA to finish resetting //
       if (readWord(INA_CONFIGURATION_REGISTER)==INA_DEFAULT_CONFIGURATION) {  // Yes, we've found an INA226!      //
         _Current_LSB = (uint32_t)maxBusAmps*1000000000/32767;                 // Get the best possible LSB        //
-        _Calibration = 51200000/((int64_t)_Current_LSB*nanoOhmR/100000);      // Compute calibration register     //
+        _Calibration = 51200000/((int64_t)_Current_LSB*microOhmR/100000);      // Compute calibration register     //
         _Power_LSB   = (uint32_t)25*_Current_LSB;                             // Fixed multiplier for INA219      //
         writeWord(INA_CALIBRATION_REGISTER,_Calibration);                     // Write the calibration value      //
         break;                                                                // Stop searching                   //
